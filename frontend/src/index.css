@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  @apply bg-slate-100 text-slate-900 font-sans antialiased;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Mobile frame on larger screens */
+.app-shell {
+  @apply mx-auto w-full max-w-[480px] min-h-screen bg-white shadow-xl relative overflow-hidden;
+}
+
+@media (min-width: 481px) {
+  body {
+    @apply bg-slate-200;
+  }
+  .app-shell {
+    @apply my-6 rounded-3xl;
+    min-height: calc(100vh - 3rem);
+  }
+}
+
+/* Smooth scrollbars hidden on the mobile shell */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Pull-to-refresh hint removed; we just want nice scroll */
+.task-card-enter {
+  animation: slideUp 0.25s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Range date input niceties */
+input[type='datetime-local'] {
+  font-family: inherit;
+}
